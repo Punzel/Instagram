@@ -3,10 +3,10 @@ import time
 import tkinter
 from Tkinter import *
 
+#login function on main screen
 def main_account_screen():
     global main_screen
     main_screen = Tk()
-   # main_screen = Toplevel(main_screen)
     main_screen.title("Login")
     main_screen.geometry("300x250")
     Label(main_screen, text="Please enter details below to login").pack()
@@ -30,6 +30,8 @@ def main_account_screen():
     
     main_screen.mainloop()
  
+#checking if login data is correct, if yes going to new screen 
+#also calling the instagram API
 def logging_in():
     username=username_l.get()
     password=password_l.get()
@@ -56,8 +58,6 @@ def logging_in():
 
             
     if login == True:
-        #Button(text="Login", height="2", width="30", command = user_screen).pack()
-        #Label(text="").pack()
         print "logged in"
         global functions_screen
         functions_screen = Toplevel(main_screen)
@@ -70,6 +70,7 @@ def logging_in():
         Button(functions_screen, text="Unfollower", width=10, height=1, command = unfollower).pack()
         Button(functions_screen, text="Show Unfollower", width=10, height=1, command = show_unfollower).pack()
 
+#shows the amount of following for the logged in account       
 def following():
     followers   = []
   
@@ -89,7 +90,7 @@ def following():
     print len(following_set)
     Label(functions_screen, text=len(following_set)).pack()
     
-    
+#shows the amount of followers for the logged in account       
 def follower():
     followers   = []
   
@@ -109,7 +110,7 @@ def follower():
     print len(followers_set)
     Label(functions_screen, text=len(followers_set)).pack()
     
-    
+#shows the amount of unfollowers for the logged in account       
 def unfollower():
     followers   = []
   
@@ -133,6 +134,7 @@ def unfollower():
     
     Label(functions_screen, text=len(not_following_back)).pack()
 
+# gives a list with unfollowers     
 def show_unfollower():    
     followers   = []
   
